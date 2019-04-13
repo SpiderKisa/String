@@ -12,15 +12,15 @@ class String {
     List *head = nullptr;
 
 public:
-    String ();
+    String (); //????
 
     String (const char* s);
 
     String (const String &s);
 
-    /*~String();
+    ~String();
 
-    String &operator= (const String &s);
+   /* String &operator= (const String &s);
 
     friend bool operator< (const String &s1, const String &s2);
 

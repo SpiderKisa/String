@@ -1,7 +1,7 @@
 #include "src/str.h"
 #include <iostream>
 
-
+using namespace std;
 
 int main() {
     String s1;

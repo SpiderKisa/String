@@ -2,11 +2,7 @@
 #include <iostream>
 
 
-String::String() {
-    head = new List;
-    head->value = '\0';
-    head->next = nullptr;
-}
+String::String() {} //???
 
 
 String::String(const char *s) {
@@ -15,7 +11,7 @@ String::String(const char *s) {
     current->next = nullptr;
     head = current;
     int i(0);
-    while (s[i] != '\0'){
+    while (s[i + 1] != '\0'){
         i++;
         current->next = new List;
         current->next->value = s[i];
@@ -38,6 +34,18 @@ String::String(const String &s) {
         current_this = current_this->next;
         current_s = current_s->next;
     }
+}
+
+
+String::~String() {
+    List *current = head;
+    List *next = current->next;
+    while (current != nullptr){
+        delete current;
+        current = next;
+        next = next->next;
+    }
+    head = nullptr;
 }
 
 

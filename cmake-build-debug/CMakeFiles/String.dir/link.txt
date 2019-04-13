@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/String.dir/main.cpp.o CMakeFiles/String.dir/src/str.cpp.o  -o String.exe -Wl,--out-implib,libString.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

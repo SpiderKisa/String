@@ -12,13 +12,13 @@ class String {
     List *head = nullptr;
 
 public:
-    String (); //????
+    String ();                              //????
 
     String (const char* s);
 
     String (const String &s);
 
-    ~String();
+    ~String();                              //А он нужен?
 
    /* String &operator= (const String &s);
 
@@ -30,13 +30,13 @@ public:
 
     friend bool operator>= (const String &s1, const String &s2);//???
 
-    friend String operator+ (const String &s1, const String &s2);
+    friend String operator+ (const String &s1, const String &s2);*/
 
     int length();
 
-    int pos (const String &s);
+    int pos (String &s); //возвращает индекс (отсчет с 0), начиная с которого в строке содержится s ТАК?!
 
-    String substr (const String &s, int src, int n); //выделить n символов строки s, начиная с src ???????
+    /*String substr (const String &s, int src, int n); //выделить n символов строки s, начиная с src ???????
 
     friend std::ostream& operator<< (std::ostream &out, const String &s);*/
 };

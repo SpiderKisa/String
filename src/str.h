@@ -34,11 +34,11 @@ public:
 
     int length();
 
-    int pos (String &s); //возвращает индекс (отсчет с 0), начиная с которого в строке содержится s ТАК?!
+    int pos (String &s); //возвращает индекс (отсчет с 1), начиная с которого в строке содержится s ТАК?! или с 1 отсчет?
 
-    /*String substr (const String &s, int src, int n); //выделить n символов строки s, начиная с src ???????
+    String substr (unsigned int src, unsigned int n); //выделить n символов строки, начиная с src ???????
 
-    friend std::ostream& operator<< (std::ostream &out, const String &s);*/
+   /* friend std::ostream& operator<< (std::ostream &out, const String &s);*/
 };
 
 

@@ -3,6 +3,7 @@
 
 #define FAIL -1
 
+
 String::String() {} //???
 
 
@@ -39,15 +40,14 @@ String::String(const String &s) {
 
 
 String::~String() {                             // А он нужен?
-    List *next = head->next;
+    List *next = head;
     while (head != nullptr){
-        delete head;
-        head = next;
         if (next != nullptr) {
             next = next->next;
         }
+        delete head;
+        head = next;
     }
-    head = nullptr;
 }
 
 
@@ -90,3 +90,30 @@ int String::pos(String &s) {
     return FAIL;
 }
 
+
+String String::substr(unsigned int src, unsigned int n) {
+    int length = this->length();
+    String sub;
+    if (src >= length){
+        return sub;
+    }
+    List *current = head;
+    for (int i = 0; i < src; i++){
+        current = current->next;
+    }
+
+    List *current_sub = sub.head = new List;
+    current_sub->value = current->value;
+    current_sub->next = nullptr;
+    current = current->next;
+    n--;
+    while (current != nullptr && n > 0){
+        current_sub->next = new List;
+        current_sub->next->value = current->value;
+        current_sub->next->next = nullptr;
+        current_sub = current_sub->next;
+        current = current->next;
+        n--;
+    }
+    return sub;
+}

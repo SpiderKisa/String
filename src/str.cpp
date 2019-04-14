@@ -23,7 +23,7 @@ String::String(const char *s) {
     current = nullptr;
 }
 
-String::String(const String &s) {
+void String::copy(const String &s) {
     List *current_s = s.head;
     List *current_this = head = new List;
     current_this->value = current_s->value;
@@ -38,8 +38,11 @@ String::String(const String &s) {
     }
 }
 
+String::String(const String &s) {
+    copy(s);
+}
 
-String::~String() {                             // А он нужен?
+void String::cleanup() {
     List *next = head;
     while (head != nullptr){
         if (next != nullptr) {
@@ -48,6 +51,10 @@ String::~String() {                             // А он нужен?
         delete head;
         head = next;
     }
+}
+
+String::~String() {                             // А он нужен?
+    cleanup();
 }
 
 
@@ -125,4 +132,14 @@ std::ostream& operator<< (std::ostream &out, const String &s){
         current = current->next;
     }
     return out;
+}
+
+
+String& String::operator=(const String &s) {
+    if (this == &s){
+        return *this;
+    }
+    cleanup();
+    copy(s);
+    return *this;
 }

@@ -11,6 +11,9 @@ struct List {
 class String {
     List *head = nullptr;
 
+    void cleanup();
+
+    void copy(const String &s);
 public:
     String ();                              //????
 
@@ -20,9 +23,9 @@ public:
 
     ~String();                              //А он нужен?
 
-   /* String &operator= (const String &s);
+    String &operator= (const String &s);
 
-    friend bool operator< (const String &s1, const String &s2);
+    /*friend bool operator< (const String &s1, const String &s2);
 
     friend bool operator> (const String &s1, const String &s2);
 

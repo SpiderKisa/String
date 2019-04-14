@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/super hacka/Desktop/structures/string/String/main.cpp
-src/str.h
-/cygdrive/c/Users/super hacka/Desktop/structures/string/String/src/str.h
-iostream
--
-
 /cygdrive/c/Users/super hacka/Desktop/structures/string/String/src/str.cpp
 str.h
 /cygdrive/c/Users/super hacka/Desktop/structures/string/String/src/str.h

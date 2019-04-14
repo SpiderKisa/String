@@ -28,6 +28,7 @@ String::String(const char *s) {
     initWithChar(s);
 }
 
+
 void String::copy(const String &s) {
     List *current_s = s.head;
     List *current_this = head = new List;
@@ -43,9 +44,11 @@ void String::copy(const String &s) {
     }
 }
 
+
 String::String(const String &s) {
     copy(s);
 }
+
 
 void String::cleanup() {
     List *next = head;
@@ -57,6 +60,7 @@ void String::cleanup() {
         head = next;
     }
 }
+
 
 String::~String() {                             // А он нужен?
     cleanup();
@@ -72,6 +76,7 @@ int String::length() {
     }
     return count;
 }
+
 
 int String::pos(String &s) {
     int length_s = s.length();
@@ -130,6 +135,13 @@ String String::substr(unsigned int src, unsigned int n) {
 }
 
 
+String String::insert(String &s, unsigned int n) {
+    String begin = substr(0, n);
+    String end = substr(n, length() - n);
+    return (begin + s + end);
+}
+
+
 std::ostream& operator<< (std::ostream &out, const String &s){
     List *current = s.head;
     while (current != nullptr){
@@ -155,6 +167,7 @@ String& String::operator=(const char *s) {
     initWithChar(s);
 }
 
+
 String operator+ (const String &s1, const String &s2){
     String concat;
     concat.copy(s1);
@@ -173,6 +186,7 @@ String operator+ (const String &s1, const String &s2){
     return concat;
 }
 
+
 String operator+ (const String &s1, const char *s2){
     String s(s2);
     return (s1 + s);
@@ -183,6 +197,7 @@ String operator+ (const char *s1, const String &s2){
     String s(s1);
     return (s + s2);
 }
+
 
 bool operator== (String &s1, String &s2){
     int length = s1.length();
@@ -199,6 +214,7 @@ bool operator== (String &s1, String &s2){
     }
     return (count == length);
 }
+
 
 bool operator== (String &s1, const char *s2){
     String s(s2);
@@ -237,6 +253,7 @@ bool operator< (String &s1, String &s2){
     return (count != length);
 }
 
+
 bool operator!= (String &s1, String &s2){
     return !(s1 == s2);
 }
@@ -265,6 +282,7 @@ bool operator< (const char *s1, String &s2){
     return (s < s2);
 }
 
+
 bool operator> (String &s1, String &s2){
     return (s1 != s2 && !(s1 < s2));
 }
@@ -280,6 +298,7 @@ bool operator> (const char *s1, String &s2){
     String s(s1);
     return (s > s2);
 }
+
 
 bool operator<= (String &s1, String &s2){
     return (s1 < s2 || s1 == s2);

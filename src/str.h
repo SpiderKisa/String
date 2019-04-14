@@ -29,6 +29,8 @@ public:
 
     String substr (unsigned int src, unsigned int n); //выделить n символов строки после src. (src +1, src +2, .., src + n)
 
+    String insert(String &s, unsigned int n); //ставить s в строку после позиции n
+
     friend std::ostream& operator<< (std::ostream &out, const String &s);
 
     String &operator= (const String &s);

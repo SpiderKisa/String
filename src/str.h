@@ -31,6 +31,8 @@ public:
 
     String insert(String &s, unsigned int n); //ставить s в строку после позиции n
 
+    String remove (unsigned int src, unsigned int n);
+
     friend std::ostream& operator<< (std::ostream &out, const String &s);
 
     String &operator= (const String &s);

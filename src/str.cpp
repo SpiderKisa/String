@@ -135,6 +135,13 @@ String String::substr(unsigned int src, unsigned int n) {
 }
 
 
+String String::remove (unsigned int src, unsigned int n){
+    String begin = substr(0, src);
+    String end = substr(src + n, length() - src + n);
+    return (begin + end);
+}
+
+
 String String::insert(String &s, unsigned int n) {
     String begin = substr(0, n);
     String end = substr(n, length() - n);

@@ -28,16 +28,20 @@ public:
     String &operator= (const String &s);
 
     String &operator= (const char *s);
-
-    /*friend bool operator< (const String &s1, const String &s2);
+    friend bool operator== (String &s1, String &s2);
+   /* friend bool operator< (const String &s1, const String &s2);
 
     friend bool operator> (const String &s1, const String &s2);
 
     friend bool operator<= (const String &s1, const String &s2);//???
 
-    friend bool operator>= (const String &s1, const String &s2);//???*/
-
+    friend bool operator>= (const String &s1, const String &s2);//???
+    */
     friend String operator+ (const String &s1, const String &s2);
+
+    friend String operator+ (const String &s1, const char *s2);
+
+    friend String operator+ (const char *s1, const String &s2);
 
     int length();
 
@@ -50,15 +54,20 @@ public:
 
 std::ostream& operator<< (std::ostream &out, const String &s);
 
-bool operator< (const String &s1, const String &s2);
+bool operator< (String &s1, String &s2);
 
-bool operator> (const String &s1, const String &s2);
+bool operator> (String &s1, String &s2);
 
-bool operator<= (const String &s1, const String &s2);//???
+bool operator<= (String &s1, String &s2);//???
 
-bool operator>= (const String &s1, const String &s2);//???
+bool operator>= (String &s1, String &s2);//???
+
+bool operator== (String &s1, String &s2);
 
 String operator+ (const String &s1, const String &s2);
 
+String operator+ (const String &s1, const char *s2);
+
+String operator+ (const char *s1, const String &s2);
 
 #endif //STRING_STR_H

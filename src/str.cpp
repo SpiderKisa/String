@@ -172,3 +172,30 @@ String operator+ (const String &s1, const String &s2){
     }
     return concat;
 }
+
+String operator+ (const String &s1, const char *s2){
+    String s(s2);
+    return (s1 + s);
+}
+
+
+String operator+ (const char *s1, const String &s2){
+    String s(s1);
+    return (s + s2);
+}
+
+bool operator== (String &s1, String &s2){
+    int length = s1.length();
+    if (length != s2.length()){
+        return false;
+    }
+    int count(0);
+    List *current1 = s1.head;
+    List *current2 = s2.head;
+    while (count < length && current1->value == current2->value){
+        count++;
+        current1 = current1->next;
+        current2 = current2->next;
+    }
+    return count == length;
+}

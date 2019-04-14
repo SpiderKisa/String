@@ -4,7 +4,7 @@
 #define FAIL -1
 
 
-String::String() {} //???
+String::String() = default; //???
 
 
 void String::initWithChar(const char *s) {
@@ -197,5 +197,120 @@ bool operator== (String &s1, String &s2){
         current1 = current1->next;
         current2 = current2->next;
     }
-    return count == length;
+    return (count == length);
 }
+
+bool operator== (String &s1, const char *s2){
+    String s(s2);
+    return (s1 == s);
+}
+
+
+bool operator== (const char *s1, String &s2){
+    String s(s1);
+    return (s == s2);
+}
+
+
+bool operator< (String &s1, String &s2){
+    int length = s1.length();
+    if (length < s2.length()){
+        return true;
+    }
+    if (length > s2.length()){
+        return false;
+    }
+    int count(0);
+    List *current1 = s1.head;
+    List *current2 = s2.head;
+    while (count < length){
+        count++;
+        if (current1->value < current2->value){
+            return true;
+        }
+        if (current1->value > current2->value){
+            return false;
+        }
+        current1 = current1->next;
+        current2 = current2->next;
+    }
+    return (count != length);
+}
+
+bool operator!= (String &s1, String &s2){
+    return !(s1 == s2);
+}
+
+
+bool operator!= (String &s1, const char *s2){
+    String s(s2);
+    return !(s1 == s);
+}
+
+
+bool operator!= (const char *s1, String &s2){
+    String s(s1);
+    return !(s == s2);
+}
+
+
+bool operator< (String &s1, const char *s2){
+    String s(s2);
+    return (s1 < s);
+}
+
+
+bool operator< (const char *s1, String &s2){
+    String s(s1);
+    return (s < s2);
+}
+
+bool operator> (String &s1, String &s2){
+    return (s1 != s2 && !(s1 < s2));
+}
+
+
+bool operator> (String &s1, const char *s2){
+    String s(s2);
+    return (s1 > s);
+}
+
+
+bool operator> (const char *s1, String &s2){
+    String s(s1);
+    return (s > s2);
+}
+
+bool operator<= (String &s1, String &s2){
+    return (s1 < s2 || s1 == s2);
+}
+
+
+bool operator<= (String &s1, const char *s2){
+    String s(s2);
+    return (s1 <= s);
+}
+
+
+bool operator<= (const char *s1, String &s2){
+    String s(s1);
+    return (s <= s2);
+}
+
+
+bool operator>= (String &s1, String &s2){
+    return (s1 > s2 || s1 == s2);
+}
+
+
+bool operator>= (String &s1, const char *s2){
+    String s(s2);
+    return (s1 >= s);
+}
+
+
+bool operator>= (const char *s1, String &s2){
+    String s(s1);
+    return (s >= s2);
+}
+

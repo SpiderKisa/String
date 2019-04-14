@@ -38,9 +38,10 @@ public:
 
     String substr (unsigned int src, unsigned int n); //выделить n символов строки, начиная с src ???????
 
-   /* friend std::ostream& operator<< (std::ostream &out, const String &s);*/
+    friend std::ostream& operator<< (std::ostream &out, const String &s);
 };
 
+std::ostream& operator<< (std::ostream &out, const String &s);
 
 bool operator< (const String &s1, const String &s2);
 

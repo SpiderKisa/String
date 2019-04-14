@@ -101,7 +101,6 @@ String String::substr(unsigned int src, unsigned int n) {
     for (int i = 0; i < src; i++){
         current = current->next;
     }
-
     List *current_sub = sub.head = new List;
     current_sub->value = current->value;
     current_sub->next = nullptr;
@@ -116,4 +115,14 @@ String String::substr(unsigned int src, unsigned int n) {
         n--;
     }
     return sub;
+}
+
+
+std::ostream& operator<< (std::ostream &out, const String &s){
+    List *current = s.head;
+    while (current != nullptr){
+        out << current->value;
+        current = current->next;
+    }
+    return out;
 }

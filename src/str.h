@@ -27,11 +27,11 @@ public:
 
     int pos (String &s); //количество символов в строке до начала подстроки s (т.е., s входит в строку, начиная с pos+1). Если s не входит в строку, то -1
 
-    String substr (unsigned int src, unsigned int n); //выделить n символов строки после src. (src +1, src +2, .., src + n)
+    String substr (int src, int n); //выделить n символов строки после src. (src +1, src +2, .., src + n)
 
-    String insert(String &s, unsigned int n); //ставить s в строку после позиции n
+    String insert(String &s, int n); //ставить s в строку после позиции n
 
-    String remove (unsigned int src, unsigned int n);
+    String remove (int src, int n);
 
     friend std::ostream& operator<< (std::ostream &out, const String &s);
 

@@ -3,13 +3,22 @@
 
 using namespace std;
 
+String supersede(String string, String substring, const String& substitution){
+    String changed;
+    int step = substring.length();
+    while (string.pos(substring) >= 0){
+        changed = changed + string.substr(0, string.pos(substring)) + substitution;
+        string = string.remove(0, string.pos(substring) + step);
+    }
+    changed = changed + string;
+    return changed;
+}
+
 int main() {
-    String s1;
-    String s2("See you,  cowboy");
-    String s3("space");
-    s1 = s2.insert(s3, 9);
-    cout << s1 << endl;
-    String s4 = s1.remove(s1.pos(s3), s3.length() + 1);
-    cout << s4 << endl;
+    String s1("See you, space cowboy");
+    String s2("Ok!");
+    String s3("Hell yeah!");
+    String s4 = supersede(s1, s2, s3);
+    cout << s4;
     return 0;
 }

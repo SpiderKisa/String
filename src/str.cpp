@@ -30,6 +30,9 @@ String::String(const char *s) {
 
 
 void String::copy(const String &s) {
+    if (s.head == nullptr){
+        return;
+    }
     List *current_s = s.head;
     List *current_this = head = new List;
     current_this->value = current_s->value;
@@ -108,10 +111,10 @@ int String::pos(String &s) {
 }
 
 
-String String::substr(unsigned int src, unsigned int n) {
-    int length = this->length();
+String String::substr(int src, int n) {
     String sub;
-    if (src >= length){
+    int length = this->length();
+    if (src >= length || n == 0){
         return sub;
     }
     List *current = head;
@@ -135,14 +138,14 @@ String String::substr(unsigned int src, unsigned int n) {
 }
 
 
-String String::remove (unsigned int src, unsigned int n){
+String String::remove (int src, int n){
     String begin = substr(0, src);
     String end = substr(src + n, length() - src + n);
     return (begin + end);
 }
 
 
-String String::insert(String &s, unsigned int n) {
+String String::insert(String &s, int n) {
     String begin = substr(0, n);
     String end = substr(n, length() - n);
     return (begin + s + end);
@@ -178,6 +181,10 @@ String& String::operator=(const char *s) {
 String operator+ (const String &s1, const String &s2){
     String concat;
     concat.copy(s1);
+    if (concat.head == nullptr){
+        concat = s2;
+        return concat;
+    }
     List *current_s = s2.head;
     List *current_con = concat.head;
     while (current_con->next != nullptr){

@@ -14,6 +14,8 @@ class String {
     void cleanup();
 
     void copy(const String &s);
+
+    void initWithChar(const char *s);
 public:
     String ();                              //????
 
@@ -25,15 +27,17 @@ public:
 
     String &operator= (const String &s);
 
+    String &operator= (const char *s);
+
     /*friend bool operator< (const String &s1, const String &s2);
 
     friend bool operator> (const String &s1, const String &s2);
 
     friend bool operator<= (const String &s1, const String &s2);//???
 
-    friend bool operator>= (const String &s1, const String &s2);//???
+    friend bool operator>= (const String &s1, const String &s2);//???*/
 
-    friend String operator+ (const String &s1, const String &s2);*/
+    friend String operator+ (const String &s1, const String &s2);
 
     int length();
 

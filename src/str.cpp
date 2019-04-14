@@ -7,7 +7,7 @@
 String::String() {} //???
 
 
-String::String(const char *s) {
+void String::initWithChar(const char *s) {
     List *current = new List;
     current->value = s[0];
     current->next = nullptr;
@@ -21,6 +21,11 @@ String::String(const char *s) {
         current = current->next;
     }
     current = nullptr;
+}
+
+
+String::String(const char *s) {
+    initWithChar(s);
 }
 
 void String::copy(const String &s) {
@@ -142,4 +147,28 @@ String& String::operator=(const String &s) {
     cleanup();
     copy(s);
     return *this;
+}
+
+
+String& String::operator=(const char *s) {
+    cleanup();
+    initWithChar(s);
+}
+
+String operator+ (const String &s1, const String &s2){
+    String concat;
+    concat.copy(s1);
+    List *current_s = s2.head;
+    List *current_con = concat.head;
+    while (current_con->next != nullptr){
+        current_con = current_con->next;
+    }
+    while (current_s != nullptr){
+        current_con->next = new List;
+        current_con->next->value = current_s->value;
+        current_con->next->next = nullptr;
+        current_con = current_con->next;
+        current_s = current_s->next;
+    }
+    return concat;
 }

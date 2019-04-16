@@ -38,6 +38,10 @@ public:
     String &operator= (const String &s);
     String &operator= (const char *s);
 
+    friend String operator+ (const String &s1, const String &s2);
+    friend String operator+ (const String &s1, const char *s2);
+    friend String operator+ (const char *s1, const String &s2);
+
     friend bool operator== (String &s1, String &s2);
     friend bool operator== (String &s1, const char *s2);
     friend bool operator== (const char *s1, String &s2);
@@ -62,9 +66,6 @@ public:
     friend bool operator>= (String &s1, const char *s2);
     friend bool operator>= (const char *s1, String &s2);
 
-    friend String operator+ (const String &s1, const String &s2);
-    friend String operator+ (const String &s1, const char *s2);
-    friend String operator+ (const char *s1, const String &s2);
 };
 
 std::ostream& operator<< (std::ostream &out, const String &s);

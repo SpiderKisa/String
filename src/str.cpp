@@ -25,7 +25,11 @@ void String::initWithChar(const char *s) {
 
 
 String::String(const char *s) {
-    initWithChar(s);
+    if (s[0] == '\0'){
+        head = nullptr;
+    } else {
+        initWithChar(s);
+    }
 }
 
 
@@ -65,7 +69,7 @@ void String::cleanup() {
 }
 
 
-String::~String() {                             // А он нужен?
+String::~String() {
     cleanup();
 }
 
@@ -83,7 +87,7 @@ int String::length() {
 
 int String::pos(String &s) {
     int length_s = s.length();
-    if (length_s > length()){
+    if (length_s > length() || length_s == 0){
         return FAIL;
     }
     List *current_this;
